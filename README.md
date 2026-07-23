@@ -1,13 +1,23 @@
 
 # Plan de compra
 
+1. Ve a la url: https://github.com/paranedagarcia/ia-produccion/tree/desarrollo
+2. Copia el codigo desde el boton '<> Code'
+3. Abre VSCode y abreuna nueva ventana (File -> New Window)
+4. Elige Clone Git Repository
+5. Pega la url de git copiada y presiona <Enter>
+6. Elige la carpeta de destino (que contendrá el repositorio)
 
-descomprime el archivo produccion.zip
+Luego:
+- Ejecuta en la terminal (View->Terminal):
 
-Abre VSCode y abre la carpeta produccion
+> Revisa las instrucciones en: https://patricioaraneda.cl/python/docs/introduccion/instalacion
+>  
+> para instalar `uv`
 
-ejecuta en la terminal (View->Terminal):
+Una vez instalado `uv`:
 
+Crea el entorno de Python:
 ```bash
 uv init
 
@@ -15,11 +25,12 @@ uv venv --python 3.13
 ```
 y activalo con 
 ```bash
+source .venv/bin/activate  # For Linux/Mac
 .venv\Scripts\activate     # For Windows
 ```
 
 
-Convertir las dependencias desde al archivo requirements
+Convertir las dependencias desde el archivo requirements
 ```bash
 uv add -r requirements.txt
 ```
