@@ -1,5 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
+#from ydata_profiling import ProfileReport
+# accesorios
 from streamlit_extras.metric_cards import style_metric_cards
 from millify import millify
 
@@ -16,6 +18,7 @@ st.set_page_config(
 with open('style/estilos.css') as f:
     css = f.read()
 st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
+
 
 st.title("📊 Análisis de Plan de Compras")
 
@@ -45,6 +48,9 @@ st.sidebar.info(f"Código proceso: {codigo_proceso}")
 ##############################################################
 
 if archivo is not None:
+    # barra de progreso
+    progress_bar = st.progress(0)
+    progress_bar.progress(10, "Cargando datos...")
 
     df = pd.read_excel(archivo)
 
@@ -61,7 +67,7 @@ if archivo is not None:
     ##############################################################
     # TRANSFORMACIONES
     ##############################################################
-
+    progress_bar.progress(25, "Transformaciones...")
     # 1
     df = df[
         df["id proyecto"]
@@ -87,8 +93,36 @@ if archivo is not None:
         .str.replace(" ", "", regex=False)
     )
 
+
+    
+
+    #mostrar barra de progreso con un mensaje y luego desaparecer
+    progress_bar.progress(60, "Modificando nombre de proyecto...")
+
+
+    # -------------------------------------------------------------
+    # modificar el nombre del proyecto segun el nombre de la planilla 
+    # # codigos_unicos
+    # ---------------------------------------------
+    # transformacion de nombre de proyecto basado en codigos unicos
+    codigos = pd.read_excel('codigos_unicos.xlsx')
+    # Asegurar que las columnas de cruce tengan formato string sin espacios extra
+    df['código presupuestario'] = df['código presupuestario'].astype(str).str.strip()
+    codigos['Codigo'] = codigos['Codigo'].astype(str).str.strip()
+
+    # Realizar el Join entre df y codigos
+    df_merged = df.merge(
+        codigos[['Codigo', 'Nombre']], 
+        left_on='código presupuestario', 
+        right_on='Codigo', 
+        how='left'
+    )
+    # Reemplazar los valores en 'Nombre Proyecto' con el nuevo 'Nombre' obtenido del join
+    # Se mantiene el valor original en caso de que no haya coincidencia
+    df['nombre proyecto'] = df_merged['Nombre'].fillna(df['nombre proyecto'])
+
     ##############################################################
-    # HEADER CARDS
+    # HEADER TARJETAS
     ##############################################################
 
     total_registros = len(df)
@@ -99,17 +133,20 @@ if archivo is not None:
 
     c1.metric(
         "Total registros",
-        f"{total_registros:,}"
+        f"{total_registros:,}",
+        delta="30",
     )
 
     c2.metric(
         "Monto Total",
-       millify(monto_total, precision=2)
+       millify(monto_total, precision=2),
+       delta=millify(monto_total - 1000000, precision=2)
     )
 
     c3.metric(
         "Monto promedio",
-        millify(df["monto total ítem año 2025"].mean(), precision=2)
+        millify(df["monto total ítem año 2025"].mean(), precision=2),
+        delta="-50"
     )
     c4.metric(
         "Valor máximo",
@@ -123,9 +160,13 @@ if archivo is not None:
     ##############################################################
     # ANALISIS EXPLORATORIO
     ##############################################################
+    progress_bar.progress(80, "Análisis Exploratorio...")
 
     st.header("Análisis Exploratorio")
-    st.dataframe(df.head(1000), use_container_width=True)
+
+    # walker = pyg.walk(df) # exploración de datos esilo Tableau
+
+    st.dataframe(df.head(500), use_container_width=True)
 
     nulos = pd.DataFrame({
 
@@ -166,7 +207,8 @@ if archivo is not None:
     ##############################################################
     # TABLAS RESUMEN
     ##############################################################
-
+    progress_bar.progress(90, "Generando resúmenes...")
+    
     st.header("Resúmenes")
 
     resumen1 = (
@@ -260,6 +302,7 @@ if archivo is not None:
         use_container_width=True
     )
 
+    progress_bar.empty()
 
     ##############################################################
     # DESCARGA ARCHIV

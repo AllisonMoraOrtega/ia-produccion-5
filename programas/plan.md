@@ -11,18 +11,22 @@ Realiza las transformaciones solicitadas en el orden indicado:
 
 3. elimina espacios, y todos los guiones ('-') dentro de la columna 'teléfono responsable'. 
 
+
 ## Analisis exploratorio
 
 Realiza un análisis exploratorio para detectar y mostrar:
 
 - Cantidad de valores nulos por columna, en cantidad y mostrar porcentaje de nulos.
+
 - Propone eliminar la columna con los valores nulos mas altos. Para ello espera respuesta (SI/NO) y elimina si responde 'SI'.
 
 ## Resumenes
 
 Crea y visualiza las siguientes tablas resumenes:
 - totales de 'monto total íem año 2025' agrupados por 'nombre responsable', ordenados en forma descendente.
+
 - los 10 itemes más caros basados en 'monto unitario ítem', ordenados en forma descendente. incluye 'nombre ítem' y 'nombre responsable'.
+
 - los itemes mas comprados basados en 'nombre ítem' y 'monto unitario ítem´. agrupados por 'nombre ítem'. ordenados en forma descendente.
 
 ## Gráficos

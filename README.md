@@ -9,6 +9,8 @@ Abre VSCode y abre la carpeta produccion
 ejecuta en la terminal (View->Terminal):
 
 ```bash
+uv init
+
 uv venv --python 3.13
 ```
 y activalo con 

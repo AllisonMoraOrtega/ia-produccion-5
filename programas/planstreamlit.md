@@ -1,11 +1,13 @@
 # Streamlit
 
-# sidebar
+## sidebar
 - crea una opcion para elegir el archivo excel a procesar.
+
 - crea una seleccion (opcion unica) para elegir el año a procesar (rango de 2022 a 2025) nombra esto como 'codigo_year'.
+
 - establece una variable 'codigo_proceso' como 'PC'+ ultimos dos digitos de 'codigo_year'.
 
-# header
+## header
 coloca en la parte superior de la pantalla en formato de cards, el total de registros, monto total ('monto total íem año 2025')
 
 # Plan de trabajo
