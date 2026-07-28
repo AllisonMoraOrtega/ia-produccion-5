@@ -18,3 +18,6 @@
 
 ## 6
 -filtrar por codigo proyecto segun año (ultimos 3 digitos es el año) FC25. filtrar solo mostrar año 25.
+
+
+actividades 28 de julio
