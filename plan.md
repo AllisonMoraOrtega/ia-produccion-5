@@ -1,32 +1,20 @@
 
+# actividades
 
-git branch --show-current
+## crea varios notebook ipynb
 
-cambio de nombre
-git branch -m main
+### actividades
+- cargar planilla de compras 2025
+## 1
+- realizar  EDA
+## 2
+- tablas de resumen
+## 3
+- graficos de resumen
+## 4
+- Limpieza de columnas de telefono
+## 5
+- analisis de fechas
 
- ```
-# push nuevo nombre
-git branch -m main
-
-# cambio realizados
-git diff --staged
-
-# reversar a versione previas
-# corregir mensaje de commit
-git commit --amend
-
-# eliminar ultimo commit
-git reset HEAD~ 1
-
-git reset --hard HEAD~1
-
-git log
-```
-Ramas
-```
-git branch
-
-git branch -c test
-
-git checkout desarrollo
+## 6
+-filtrar por codigo proyecto segun año (ultimos 3 digitos es el año) FC25. filtrar solo mostrar año 25.
