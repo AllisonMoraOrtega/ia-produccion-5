@@ -2,6 +2,7 @@
 # actividades
 
 ## crea varios notebook ipynb
+en una carpeta "notebooks"
 
 ### actividades
 - cargar planilla de compras 2025
