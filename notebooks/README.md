@@ -23,6 +23,11 @@ en una carpeta "notebooks"
 
 - Cada uno de los integrantes tomará uno de los puntos indicados (1 a 6), definido dentro del grupo de trabajo.
 
+    * Allison Mora: puntos 1 y 2
+    * Mario Poblete: puntos 3 y 4
+    * Nicolas Bustos: punto 5
+    * Cristina Corominas: punto 6 
+
 - Cada uno de los usuarios trabajará en su branch respectivo.
 
 - Carga (merge) en el fork de grupo al finalizar el trabajo.
